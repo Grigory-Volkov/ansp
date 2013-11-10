@@ -7,10 +7,22 @@ var querystring = require("querystring");
 function start(route, handle) {//Экспортируемая функция
 	//Обращение к серверу
 	function onRequest(request, response) {
+		var postData = "";
 		var pathname = url.parse(request.url).pathname;
 		//console.log("Request for \"" + pathname + "\" received.");
 
-		route(pathname, handle, response);
+		request.setEncoding("utf-8");
+
+		request.addListener("data", function(postDataChunk) {
+			postData += postDataChunk;
+			console.log("received POST data chunk '" + postDataChunk + "'.");
+		});
+
+		request.addListener("end", function() {
+			route(pathname, handle, response, postData);
+		});
+
+		//route(pathname, handle, response);
 
 		//var query = url.parse(request.url).query;
 		//console.log("query = \"" + query + "\"");
