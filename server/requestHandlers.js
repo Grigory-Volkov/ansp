@@ -22,7 +22,7 @@ function start(response) {
     'charset=UTF-8" />'+
     '</head>'+
     '<body>'+
-    '<form action="/upload" method="post">'+
+    '<form action="/result" method="post">'+
     '<textarea name="text" rows="20" cols="60"></textarea>'+
     '<input type="submit" value="Submit text" />'+
     '</form>'+
@@ -34,14 +34,18 @@ function start(response) {
     response.end();
 }
 
-function upload(response, postData) {
-  console.log("Request handler 'upload' was called.");
+function result(response, postData) {
+  console.log("Request handler 'result' was called.");
 
   response.writeHead(200, {"Content-Type": "text/plain"});
-  //response.write("Hello. Now upload..");
   response.write("You've send: " + postData)
   response.end();
 }
 
+function upload(responce) {
+  console.log('dd');
+}
+
 exports.start = start;
+exports.result = result;
 exports.upload = upload;

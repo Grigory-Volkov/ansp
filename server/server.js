@@ -1,7 +1,9 @@
 //Модули
-var http = require("http");
-var url = require("url");
-var querystring = require("querystring");
+var http        = require("http"),
+    url         = require("url"),
+    querystring = require("querystring"),
+    formidable  = require("formidable"),
+    sys         = require("sys");
 
 //Запуск сервера
 function start(route, handle) {//Экспортируемая функция
