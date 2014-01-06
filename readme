@@ -1,3 +1,13 @@
 research work "accounting net service provider"
 
 Watch this project: http://ansp.meteor.com
+
+or local(port=3000) deploy:
+> curl https://install.meteor.com | /bin/sh
+> git clone git@github.com:Gigozzo/ansp.git
+> git checkout -b dev origin/dev
+> cd ansp
+> meteor reset
+> meteor
+
+127.0.0.1:3000
